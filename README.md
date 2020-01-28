@@ -2,6 +2,43 @@
 
 本项目负责平台的信息展示，可视化地理信息。
 
+## 任务
+
+基于ECharts可视化库及其他技术栈：
+
+### 创建一个完整独立的疫情地图
+- **目的&设计**：创建一个独立的疫情地图可视化，有两个主要目标
+  1. 地理精度：有市级地理粒度，最开始是一个全国地图的heatmap，点击一个省重绘成省map。（[重绘参考](https://gallery.echartsjs.com/editor.html?c=xm3iS_cb0g)）
+  2. 时间信息：有时间轴，点击一个地区可以画出[stacked area chart](https://echarts.apache.org/examples/en/editor.html?c=area-stack)之类的疫情发展图 (确诊/疑似/死亡为不同层)，也可以根据选择的时间点重绘地图。([时间轴参考案例](https://echarts.apache.org/examples/en/editor.html?c=mix-timeline-finance))
+- **使用**：单独webpage，最终作为iframe整合进前端页面
+  - 与下面的通用组件不同，疫情地图与前端其他组件交互较少，且数据可以[通过API直接获取](http://lab.isaaclin.cn/nCoV/api/area?latest=0)，单独成项目更合理。
+
+### 创建一个通用地图组件
+- **目的**：用于可视化各种不同地理信息（例如医院位置，酒店位置，etc.）
+- **使用**：作为组件被前端调用，数据来自前端。
+- **基础设计**：点图+地图（[参考例子](https://www.echartsjs.com/examples/zh/editor.html?c=effectScatter-bmap)）
+- **交互**：
+  - 不自带过滤等交互组件，上层应该自己创建checkbox, slider, etc. 过滤后数据传入地图组件可以重绘地图
+  - 接受传入的mouseEvent，可以帮助做信息过滤及定位（e.g., 点击一个省选中它的信息）
+  - ([相关讨论](https://github.com/wuhan2020/map-viz/issues/2#issuecomment-578626578))
+- [数据格式设计讨论](https://github.com/wuhan2020/map-viz/issues/3)
+
+### 任务细化
+（可以自己创建issue开始做）
+#### 疫情图
+- [x] 基础疫情地图
+- [ ] 链接API拿到实时数据(QQ或丁香医生)
+- [ ] 添加时间信息
+  - [ ] 做时间轴+数据统计stacked area chart/line chart
+- [ ] 实现交互
+  - [ ] 点击省重绘省内地图/双击或提供按钮退出省内地图，同时重绘stacked area chart
+  - [ ] 点时间轴改变地图颜色
+
+#### 通用地图
+- [ ] 基础通用地图
+- [ ] 做医院/酒店的数据mockup
+
+
 ## 技术栈
 
 -   可视化库: [ECharts v4][13]
@@ -34,6 +71,8 @@ npm start
 
 [echarts example](https://gallery.echartsjs.com/explore.html#sort=rank~timeframe=all~author=all)
 
+[百度地图](http://lbsyun.baidu.com/jsdemo.htm#canvaslayer)
+
 
 #### 例子
 
@@ -48,7 +87,7 @@ npm start
 
 #### 临时接口
 
-[疫情省市历史数据](http://ncov.nosensor.com:8080/api/)
+[省市每日历史数据](http://ncov.nosensor.com:8080/api/)
 
 [百度实时疫情](https://service-nxxl1y2s-1252957949.gz.apigw.tencentcs.com/release/newpneumonia)
 
@@ -56,10 +95,13 @@ npm start
 
 [丁香园实时疫情](https://service-0gg71fu4-1252957949.gz.apigw.tencentcs.com/release/dingxiangyuan)
 
+[丁香园每分钟历史数据](http://lab.isaaclin.cn/nCoV/api/area?latest=0)
+
+[丁香园其他](http://lab.isaaclin.cn/nCoV/)
+
 [qq实时+历史疫情](https://service-n9zsbooc-1252957949.gz.apigw.tencentcs.com/release/qq )
 
-
-
+[百度地图地址转经纬度](https://service-qf7o2c4u-1252957949.gz.apigw.tencentcs.com/release/bmap?address=华中科技大学)
 
 
 [1]: https://developers.google.cn/web/progressive-web-apps
