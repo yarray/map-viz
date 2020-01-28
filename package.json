@@ -19,6 +19,7 @@
         "js-base64": "^2.5.1",
         "mobx": "^5.15.3",
         "mobx-web-cell": "^0.2.5",
+        "ol": "^6.1.1",
         "web-cell": "^2.0.0-rc.15",
         "yaml": "^1.7.2"
     },
@@ -35,7 +36,7 @@
     },
     "prettier": {
         "singleQuote": true,
-        "tabWidth": 4,
+        "tabWidth": 2,
         "overrides": [
             {
                 "files": "*.yml",

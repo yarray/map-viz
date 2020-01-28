@@ -1,4 +1,4 @@
 import { documentReady, render, createCell } from 'web-cell';
-import { MapViz } from './page/MapViz';
+import { OpenlayersMapViz } from './page/OpenlayersMapViz';
 
-documentReady.then(() => render(<MapViz />));
+documentReady.then(() => render(<OpenlayersMapViz />));
