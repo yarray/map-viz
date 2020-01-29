@@ -14,9 +14,37 @@ const polygon = new Style({
   }),
   fill: new Fill({
     color: 'rgba(220, 220, 200, 1)'
+  })
+});
+
+const province = new Style({
+  stroke: new Stroke({
+    color: 'rgba(120, 120, 100, 1)',
+    width: 1
+  }),
+  fill: new Fill({
+    color: 'rgba(220, 220, 200, 1)'
   }),
   text: new Text({
-    font: '14px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    font: '12px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    placement: 'point',
+    fill: new Fill({
+      color: 'rgba(60, 60, 60, 1)'
+    }),
+    overflow: true
+  })
+});
+
+const city = new Style({
+  stroke: new Stroke({
+    color: 'rgba(120, 120, 100, 1)',
+    width: 1
+  }),
+  fill: new Fill({
+    color: 'rgba(220, 220, 200, 1)'
+  }),
+  text: new Text({
+    font: '12px "Open Sans", "Arial Unicode MS", "sans-serif"',
     placement: 'point',
     fill: new Fill({
       color: 'rgba(60, 60, 60, 1)'
@@ -25,13 +53,15 @@ const polygon = new Style({
 });
 
 export default {
+  Province: province,
+  City: city,
   Point: new Style({
     image: image
   }),
   LineString: new Style({
     stroke: new Stroke({
       color: 'green',
-      width: 1
+      width: 2
     })
   }),
   MultiLineString: new Style({

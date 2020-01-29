@@ -35,7 +35,7 @@ export class OpenlayersMapViz extends mixin<{}, State>() {
     const config = this.getVirusMapConfig(index);
     return (
       <div>
-        <div style={{ width: '100%', height: '90%' }}>
+        <div style={{ width: '100%', height: '100%' }}>
           <OpenlayersMap
             mapUrl={config.mapUrl}
             data={config.data}
